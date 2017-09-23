@@ -63,7 +63,7 @@
   // Preventing querying the DOM with every keydown event:
   document.querySelectorAll('.key').forEach((key) => {
     keys[key.attributes[0].value] = key;
-    key.addEventListener('transitionend', removeTransition)
+    key.addEventListener('transitionend', removeTransition);
   });
   document.querySelectorAll('audio').forEach((audio) => {
     audios[audio.attributes[0].value] = audio;
