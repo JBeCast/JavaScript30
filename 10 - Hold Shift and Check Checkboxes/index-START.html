@@ -99,6 +99,31 @@
   </div>
 
 <script>
+  const checkboxes = document.querySelectorAll('.item input');
+  const body = document.querySelector('body');
+  let first = null;
+
+  body.addEventListener('keydown', e => {
+    // We can uncheck every checkbox by pressing Escape
+    if (e.keyCode === 27) {
+      checkboxes.forEach(checkbox => {checkbox.checked = false});
+      first = null;
+    }
+  });
+  
+  function handleCheck(e){
+    if (!this.checked) return;
+    if (e.shiftKey && first !== null) {
+      let dif = first <= this.index ? 1 : -1;
+      for (i = first; i !== this.index; i += dif) checkboxes[i].checked = true;
+      first = null;
+    } else first = this.index;
+  }
+
+  checkboxes.forEach((checkbox, i) => {
+    checkbox.index = i;
+    checkbox.addEventListener('click', handleCheck);
+  });
 </script>
 </body>
 </html>
