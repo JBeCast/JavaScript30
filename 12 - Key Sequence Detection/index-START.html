@@ -7,6 +7,14 @@
 </head>
 <body>
 <script>
+  const queue = [];
+  const secret = 'jbecast';
+  window.addEventListener('keyup', e => {
+    queue.push(e.key);
+    if (queue.length > secret.length) queue.shift();
+    if (queue.join('') === secret) cornify_add();
+    console.log(queue);
+  });
 </script>
 </body>
 </html>
