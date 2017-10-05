@@ -38,8 +38,6 @@ body {
 }
 
 .hand {
-  width: 50%;
-  height: 6px;
   position: absolute;
   top: 50%;
   transform-origin: 100%;
@@ -47,15 +45,22 @@ body {
 }
 
 .second-hand {
+  height: 5px;
+  width: 50%;
   background: red;
   transition: 0.05s all;
   transition-timing-function: cubic-bezier(0.74, 2.6, 0.58, 1);
 }
 
 .min-hand {
+  height: 8px;
+  width: 50%;
   background: green;
 }
 
 .hour-hand {
+  height: 8px;
+  width: 40%;
+  left: 10%;
   background: blue;
 }

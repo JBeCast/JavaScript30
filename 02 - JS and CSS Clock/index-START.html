@@ -23,12 +23,12 @@
 
     function setDate(){
       const now = new Date();
-      const seconds = now.getSeconds();
-      const minutes = now.getMinutes();
-      const hours = now.getHours();
-      const secDegrees = (90 + 6 * seconds) % 360;
-      const minDegrees = (90 + 6 * minutes) % 360;
-      const hourDegrees = (90 + 30 * hours + minutes / 2) % 360;
+      const secs = now.getSeconds();
+      const mins = now.getMinutes();
+      const hrs = now.getHours();
+      const secDegrees = (90 + 6 * secs) % 360;
+      const minDegrees = (90 + 6 * mins) % 360;
+      const hourDegrees = (90 + 30 * hrs + mins / 2) % 360;
       secHand.style.transform = `rotate(${secDegrees}deg)`;
       minHand.style.transform = `rotate(${minDegrees}deg)`;
       hourHand.style.transform = `rotate(${hourDegrees}deg)`;
