@@ -43,20 +43,31 @@
   </div>
 
   <script>
-    function debounce(func, wait = 20, immediate = true) {
-      var timeout;
+    // Proper "debounce" function by JBeCast
+    function throttle(fn, wait = 50) {
+      let timeout;
       return function() {
-        var context = this, args = arguments;
-        var later = function() {
+        if (timeout) return;
+        else timeout = setTimeout(() => {
           timeout = null;
-          if (!immediate) func.apply(context, args);
-        };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-      };
+          fn.apply(this, arguments);
+        }, wait);
+      }
     }
+
+    const imgs = document.querySelectorAll('.slide-in');
+
+    function checkScroll(e) {
+      imgs.forEach((img) => {
+        const scrollBottom = window.scrollY + window.innerHeight;
+        const imgMiddle = img.offsetTop + img.height / 2;
+        const imgBottom = img.offsetTop + img.height;
+        if (scrollBottom >= imgMiddle) img.classList.add('active');
+        if (scrollBottom <= imgMiddle || window.scrollY >= imgBottom) img.classList.remove('active');
+      });
+    }
+
+    window.addEventListener('scroll', throttle(checkScroll, 100));
 
   </script>
 
